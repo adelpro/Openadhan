@@ -1,8 +1,24 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
+import useGeolocation from "react-hook-geolocation";
+import { GeoContext } from "../context/GeoContext";
 
 export default function InputCity() {
   const [query, setQuery] = useState("");
   const [data, setdata] = useState([]);
+  const [{ latitude, longitude, accuracy }, setgeo] = useContext(GeoContext);
+  const autogeo = useGeolocation();
+  const handleLiClick = (item) => {
+    localStorage.setItem("lat", item.lat);
+    localStorage.setItem("lon", item.lon);
+    localStorage.setItem("localisation", "manual");
+    setgeo({ latitude: item.lat, longitude: item.lon, accuracy: "" });
+  };
+  const autoButtonHandler = () => {
+    localStorage.setItem("lat", "");
+    localStorage.setItem("lon", "");
+    localStorage.setItem("localisation", "auto");
+    setgeo(autogeo);
+  };
   const onSubmitHandler = (e) => {
     e.preventDefault();
     fetch(
@@ -31,10 +47,16 @@ export default function InputCity() {
           id="name"
         />
         <button>Search</button>
+        <button onClick={autoButtonHandler}>Auto</button>
       </form>
+
       <ul>
         {data.map((item) => {
-          return <li key={item.place_id}>{item.display_name}</li>;
+          return (
+            <li onClick={() => handleLiClick(item)} key={item.place_id}>
+              {item.display_name}
+            </li>
+          );
         })}
       </ul>
     </Fragment>

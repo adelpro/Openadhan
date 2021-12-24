@@ -14,6 +14,7 @@ export default function PrayerTimes(props) {
   const qiblaDirection = adhan.Qibla(coordinates);
   //calculating time to next prayer
   /* let nextPrayerTime = prayerTimes.timeForPrayer(prayerTimes.nextPrayer()); */
+
   return (
     <div className="card">
       <img src={logo} alt="logo" />

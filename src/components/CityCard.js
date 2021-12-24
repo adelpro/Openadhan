@@ -4,7 +4,7 @@ export default function CityCard() {
   return (
     <div className="card">
       <InputCity />
-      <p>Search by city name</p>
+      <p>Search by city name (API nominatim)</p>
     </div>
   );
 }

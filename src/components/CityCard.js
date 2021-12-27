@@ -1,5 +1,4 @@
 import InputCity from "./InputCity";
-
 export default function CityCard() {
   return (
     <div className="card">

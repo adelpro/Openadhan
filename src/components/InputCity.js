@@ -5,7 +5,7 @@ import { GeoContext } from "../context/GeoContext";
 export default function InputCity() {
   const [query, setQuery] = useState("");
   const [data, setdata] = useState([]);
-  const [{ latitude, longitude, accuracy }, setgeo] = useContext(GeoContext);
+  const [setgeo] = useContext(GeoContext);
   const autogeo = useGeolocation();
   const handleLiClick = (item) => {
     localStorage.setItem("lat", item.lat);

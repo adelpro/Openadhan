@@ -12,33 +12,26 @@ import {
   Toolbar,
   List,
   ListItem,
+  Container,
 } from "@mui/material";
 import { useState } from "react";
-
+import { NavLink } from "react-router-dom";
+import classes from "./Header.module.css";
 export default function Header() {
   const [open, setopen] = useState(false);
   return (
     <AppBar position="sticky" color="default">
       <Toolbar sx={{ display: ["none", "flex"] }}>
         <Avatar sx={{ mr: "auto" }}>P</Avatar>
-        <Link
-          sx={{ pr: 2 }}
-          color="textPrimary"
-          variant="button"
-          underline="none"
-          href="#"
-        >
+        <NavLink className={classes.link} to="/">
           Home
-        </Link>
-        <Link
-          sx={{ pr: 2 }}
-          color="textPrimary"
-          variant="button"
-          underline="none"
-          href="#"
-        >
+        </NavLink>
+        <NavLink className={classes.link} to="/about">
           About
-        </Link>
+        </NavLink>
+        <NavLink className={classes.link} to="/config">
+          Config
+        </NavLink>
       </Toolbar>
       <Toolbar sx={{ display: ["flex", "none"], ml: "auto" }}>
         <IconButton onClick={() => setopen(true)}>
@@ -63,27 +56,21 @@ export default function Header() {
         <Divider />
         <List sx={{ width: 200 }}>
           <ListItem>
-            <Link
-              sx={{ pr: 2 }}
-              color="textPrimary"
-              variant="button"
-              underline="none"
-              href="#"
-            >
+            <NavLink className={classes.link} to="/">
               Home
-            </Link>
+            </NavLink>
           </ListItem>
           <ListItem>
-            <Link
-              sx={{ pr: 2 }}
-              color="textPrimary"
-              variant="button"
-              underline="none"
-              href="#"
-            >
+            <NavLink className={classes.link} to="/about">
               About
-            </Link>
+            </NavLink>
           </ListItem>
+          <ListItem>
+            <NavLink className={classes.link} to="/config">
+              Config
+            </NavLink>
+          </ListItem>
+
           <Link
             sx={{ pr: 2 }}
             color="textPrimary"
@@ -91,12 +78,14 @@ export default function Header() {
             underline="none"
             href="#"
           >
-            <IconButton>
-              <FacebookIcon />
-            </IconButton>
-            <IconButton>
-              <TwitterIcon />
-            </IconButton>
+            <Container>
+              <IconButton>
+                <FacebookIcon />
+              </IconButton>
+              <IconButton>
+                <TwitterIcon />
+              </IconButton>
+            </Container>
           </Link>
         </List>
       </SwipeableDrawer>

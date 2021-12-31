@@ -23,13 +23,22 @@ export default function Header() {
     <AppBar position="sticky" color="default">
       <Toolbar sx={{ display: ["none", "flex"] }}>
         <Avatar sx={{ mr: "auto" }}>P</Avatar>
-        <NavLink className={classes.link} to="/">
+        <NavLink
+          className={(nav) => (nav.isActive ? classes.active : classes.link)}
+          to="/"
+        >
           Home
         </NavLink>
-        <NavLink className={classes.link} to="/about">
+        <NavLink
+          className={(nav) => (nav.isActive ? classes.active : classes.link)}
+          to="/about"
+        >
           About
         </NavLink>
-        <NavLink className={classes.link} to="/config">
+        <NavLink
+          className={(nav) => (nav.isActive ? classes.active : classes.link)}
+          to="/config"
+        >
           Config
         </NavLink>
       </Toolbar>
@@ -56,17 +65,32 @@ export default function Header() {
         <Divider />
         <List sx={{ width: 200 }}>
           <ListItem>
-            <NavLink className={classes.link} to="/">
+            <NavLink
+              className={(nav) =>
+                nav.isActive ? classes.active : classes.link
+              }
+              to="/"
+            >
               Home
             </NavLink>
           </ListItem>
           <ListItem>
-            <NavLink className={classes.link} to="/about">
+            <NavLink
+              className={(nav) =>
+                nav.isActive ? classes.active : classes.link
+              }
+              to="/about"
+            >
               About
             </NavLink>
           </ListItem>
           <ListItem>
-            <NavLink className={classes.link} to="/config">
+            <NavLink
+              className={(nav) =>
+                nav.isActive ? classes.active : classes.link
+              }
+              to="/config"
+            >
               Config
             </NavLink>
           </ListItem>

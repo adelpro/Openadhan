@@ -12,7 +12,11 @@ export default function GeoNominatim({ lat, lon, acc }) {
   const { data, error, loading } = useAdresseNominatim(url);
   return (
     <Fragment>
-      {error && <p>Error: {error}</p>}
+      {error && (
+        <div className="card center_vertical">
+          <p>Error: {error}</p>
+        </div>
+      )}
       {loading && (
         <div className="card">
           <ShimmerPostItem card text />

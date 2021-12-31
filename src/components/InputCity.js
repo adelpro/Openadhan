@@ -1,4 +1,5 @@
-import { Fragment, useContext, useState } from "react";
+import { Container } from "@mui/material";
+import { useContext, useState } from "react";
 import useGeolocation from "react-hook-geolocation";
 import { GeoContext } from "../context/GeoContext";
 
@@ -10,13 +11,13 @@ export default function InputCity() {
   const handleLiClick = (item) => {
     localStorage.setItem("lat", item.lat);
     localStorage.setItem("lon", item.lon);
-    localStorage.setItem("localisation", "manual");
+    localStorage.setItem("methode", "manual");
     setgeo({ latitude: item.lat, longitude: item.lon, accuracy: "" });
   };
   const autoButtonHandler = () => {
     localStorage.setItem("lat", "");
     localStorage.setItem("lon", "");
-    localStorage.setItem("localisation", "auto");
+    localStorage.setItem("methode", "auto");
     setgeo(autogeo);
   };
   const onSubmitHandler = (e) => {
@@ -36,7 +37,7 @@ export default function InputCity() {
     }
   };
   return (
-    <Fragment>
+    <Container>
       <form onSubmit={onSubmitHandler}>
         <label htmlFor="name">City name</label>
         <input
@@ -50,7 +51,7 @@ export default function InputCity() {
         <button onClick={autoButtonHandler}>Auto</button>
       </form>
 
-      <ul>
+      <ul className="mat_list">
         {data.map((item) => {
           return (
             <li onClick={() => handleLiClick(item)} key={item.place_id}>
@@ -59,6 +60,6 @@ export default function InputCity() {
           );
         })}
       </ul>
-    </Fragment>
+    </Container>
   );
 }

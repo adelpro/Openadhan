@@ -3,7 +3,6 @@ import Moment from "react-moment";
 import "moment-timezone";
 import "../App.css";
 import logo from "../logo.svg";
-
 export default function PrayerTimes(props) {
   // Get prayers times for "today" at lat: 43, long: -80 with -5 timezone
   let date = new Date();

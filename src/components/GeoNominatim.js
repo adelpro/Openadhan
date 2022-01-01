@@ -2,14 +2,14 @@ import "../App.css";
 import logo from "../logo.svg";
 import { Fragment } from "react";
 import { ShimmerPostItem } from "react-shimmer-effects";
-import { useAdresseNominatim } from "../hooks/useAdresseNominatim";
+import { useAdressNominatim } from "../hooks/useAdressNominatim";
 export default function GeoNominatim({ lat, lon, acc }) {
   const api = {
     format: "json",
     base: "https://nominatim.openstreetmap.org/reverse?format=json",
   };
   const url = `${api.base}&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
-  const { data, error, loading } = useAdresseNominatim(url);
+  const { data, error, loading } = useAdressNominatim(url);
   return (
     <Fragment>
       {error && (
@@ -26,7 +26,7 @@ export default function GeoNominatim({ lat, lon, acc }) {
         <Fragment>
           <div className="card">
             <img src={logo} alt="logo" />
-
+            <p>API: "Nominatim"</p>
             <ul className="mat_list" style={{ textAlign: "left" }}>
               <li>Latitude: {lat}</li>
               <li>Longitude: {lon}</li>
@@ -35,7 +35,6 @@ export default function GeoNominatim({ lat, lon, acc }) {
               <li>City: {data.town}</li>
               <li>Country: {data.country}</li>
             </ul>
-            <p>API: "Nominatim"</p>
           </div>
         </Fragment>
       )}

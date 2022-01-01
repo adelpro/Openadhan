@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-export const useAdresseNominatim = (url) => {
+export const useAdressNominatim = (url) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);

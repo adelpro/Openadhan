@@ -17,6 +17,7 @@ export default function PrayerTimes(props) {
   return (
     <div className="card">
       <img src={logo} alt="logo" />
+      <p>Source: "Adhan.js"</p>
       <ul className="mat_list" style={{ textAlign: "left" }}>
         <li>Qibla: {qiblaDirection}</li>
         <li>current / next</li>
@@ -42,7 +43,6 @@ export default function PrayerTimes(props) {
           <Moment format="HH:mm">{prayerTimes.isha}</Moment>
         </li>
       </ul>
-      <p>Source: "Adhan.js"</p>
     </div>
   );
 }

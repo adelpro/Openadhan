@@ -1,7 +1,7 @@
 import "../App.css";
 import logo from "../logo.svg";
 import { Fragment } from "react";
-import { useAdresse } from "../hooks/useAdresse";
+import { useAdress } from "../hooks/useAdress";
 import { ShimmerPostItem } from "react-shimmer-effects";
 export default function Geo({ lat, lon, acc }) {
   const api = {
@@ -9,7 +9,7 @@ export default function Geo({ lat, lon, acc }) {
     base: "https://api.bigdatacloud.net/data/reverse-geocode-client",
   };
   const url = `${api.base}?latitude=${lat}&longitude=${lon}&localityLanguage=${api.lan}`;
-  const { data, error, loading } = useAdresse(url);
+  const { data, error, loading } = useAdress(url);
   return (
     <Fragment>
       {error && (
@@ -26,6 +26,7 @@ export default function Geo({ lat, lon, acc }) {
         <Fragment>
           <div className="card">
             <img src={logo} alt="logo" />
+            <p>API: "Bigdatacloud"</p>
             <ul className="mat_list" style={{ textAlign: "left" }}>
               <li>Latitude: {lat}</li>
               <li>Longitude: {lon}</li>
@@ -34,7 +35,6 @@ export default function Geo({ lat, lon, acc }) {
               <li>City: {data.city}</li>
               <li>Country: {data.countryName}</li>
             </ul>
-            <p>API: "Bigdatacloud"</p>
           </div>
         </Fragment>
       )}

@@ -6,6 +6,9 @@ import { Fragment, useContext } from "react";
 import "../App.css";
 export default function Home() {
   const { geoauto, geoautoError, geomanual, met } = useContext(GeoContext);
+  const showgeo = localStorage.getItem("GeoBigdatacloud");
+  const showGeoNominatim = localStorage.getItem("GeoNominatim");
+  console.log(showgeo);
   return (
     <Fragment>
       {geoautoError && (
@@ -15,46 +18,39 @@ export default function Home() {
       )}
       {met === "manual" && (
         <div className="cards">
-          <Geo
-            lat={geomanual.latitude}
-            lon={geomanual.longitude}
-            acc={geomanual.accuracy}
-          />
-          <GeoNominatim
-            lat={geomanual.latitude}
-            lon={geomanual.longitude}
-            acc={geomanual.accuracy}
-          />
+          {(!showgeo || showgeo === "true") && (
+            <Geo
+              lat={geomanual.latitude}
+              lon={geomanual.longitude}
+              acc={geomanual.accuracy}
+            />
+          )}
+          {(!showGeoNominatim || showGeoNominatim === "true") && (
+            <GeoNominatim
+              lat={geomanual.latitude}
+              lon={geomanual.longitude}
+              acc={geomanual.accuracy}
+            />
+          )}
           <PrayerTimes lat={geomanual.latitude} lon={geomanual.longitude} />
         </div>
       )}
-      {!geoautoError && met === "auto" && (
+      {!geoautoError && (met === "auto" || met === null) && (
         <div className="cards">
-          <Geo
-            lat={geoauto.latitude}
-            lon={geoauto.longitude}
-            acc={geoauto.accuracy}
-          />
-          <GeoNominatim
-            lat={geoauto.latitude}
-            lon={geoauto.longitude}
-            acc={geoauto.accuracy}
-          />
-          <PrayerTimes lat={geoauto.latitude} lon={geoauto.longitude} />
-        </div>
-      )}
-      {!geoautoError && met === null && (
-        <div className="cards">
-          <Geo
-            lat={geoauto.latitude}
-            lon={geoauto.longitude}
-            acc={geoauto.accuracy}
-          />
-          <GeoNominatim
-            lat={geoauto.latitude}
-            lon={geoauto.longitude}
-            acc={geoauto.accuracy}
-          />
+          {(!showgeo || showgeo === "true") && (
+            <Geo
+              lat={geoauto.latitude}
+              lon={geoauto.longitude}
+              acc={geoauto.accuracy}
+            />
+          )}
+          {(!showGeoNominatim || showGeoNominatim === "true") && (
+            <GeoNominatim
+              lat={geoauto.latitude}
+              lon={geoauto.longitude}
+              acc={geoauto.accuracy}
+            />
+          )}
           <PrayerTimes lat={geoauto.latitude} lon={geoauto.longitude} />
         </div>
       )}

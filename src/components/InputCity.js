@@ -29,6 +29,7 @@ export default function InputCity() {
   };
   const autoButtonHandler = () => {
     handlemethode(latitude, longitude, accuracy, "auto");
+    setmethode();
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();

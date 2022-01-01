@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 export const GeoContext = createContext({});
+GeoContext.displayName = "Geocontext";
 export function GeoProvider({ children }) {
   const [met, setmet] = useState(null);
   const [geomanual, setgeomanual] = useState({

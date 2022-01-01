@@ -1,24 +1,34 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useContext, useState } from "react";
-import useGeolocation from "react-hook-geolocation";
 import { GeoContext } from "../context/GeoContext";
 
 export default function InputCity() {
   const [query, setQuery] = useState("");
   const [data, setdata] = useState([]);
-  const [setgeo] = useContext(GeoContext);
-  const autogeo = useGeolocation();
+  const [
+    { latitude, longitude, accuracy },
+    geoautoError,
+    setgeomanual,
+    met,
+    setmethode,
+  ] = useContext(GeoContext);
+  const handlemethode = (lat, lon, acc, m) => {
+    localStorage.setItem("methode", m);
+    setmethode(m);
+    localStorage.setItem("latitude", lat);
+    localStorage.setItem("longitude", lon);
+    localStorage.setItem("accuracy", acc);
+  };
   const handleLiClick = (item) => {
-    localStorage.setItem("lat", item.lat);
-    localStorage.setItem("lon", item.lon);
-    localStorage.setItem("methode", "manual");
-    setgeo({ latitude: item.lat, longitude: item.lon, accuracy: "" });
+    handlemethode(item.lat, item.lon, "", "manual");
+    setgeomanual({
+      latitude: item.lat,
+      longitude: item.lon,
+      accuracy: "",
+    });
   };
   const autoButtonHandler = () => {
-    localStorage.setItem("lat", "");
-    localStorage.setItem("lon", "");
-    localStorage.setItem("methode", "auto");
-    setgeo(autogeo);
+    handlemethode(latitude, longitude, accuracy, "auto");
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -38,6 +48,10 @@ export default function InputCity() {
   };
   return (
     <Container>
+      <Typography gutterBottom variant="h5" component="div">
+        Location :{met}
+      </Typography>
+
       <form onSubmit={onSubmitHandler}>
         <label htmlFor="name">City name</label>
         <input
@@ -48,9 +62,11 @@ export default function InputCity() {
           id="name"
         />
         <button>Search</button>
-        <button onClick={autoButtonHandler}>Auto</button>
+        <button onClick={autoButtonHandler} disabled={geoautoError}>
+          Auto
+        </button>
       </form>
-
+      {geoautoError && <p>{geoautoError.message}</p>}
       <ul className="mat_list">
         {data.map((item) => {
           return (

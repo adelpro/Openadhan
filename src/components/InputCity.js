@@ -5,16 +5,11 @@ import { GeoContext } from "../context/GeoContext";
 export default function InputCity() {
   const [query, setQuery] = useState("");
   const [data, setdata] = useState([]);
-  const [
-    { latitude, longitude, accuracy },
-    geoautoError,
-    setgeomanual,
-    met,
-    setmethode,
-  ] = useContext(GeoContext);
+  const { geoauto, geoautoError, setgeomanual, met, setmet } =
+    useContext(GeoContext);
   const handlemethode = (lat, lon, acc, m) => {
     localStorage.setItem("methode", m);
-    setmethode(m);
+    setmet(m);
     localStorage.setItem("latitude", lat);
     localStorage.setItem("longitude", lon);
     localStorage.setItem("accuracy", acc);
@@ -28,8 +23,13 @@ export default function InputCity() {
     });
   };
   const autoButtonHandler = () => {
-    handlemethode(latitude, longitude, accuracy, "auto");
-    setmethode();
+    handlemethode(
+      geoauto.latitude,
+      geoauto.longitude,
+      geoauto.accuracy,
+      "auto"
+    );
+    setmet();
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();

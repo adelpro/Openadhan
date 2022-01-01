@@ -5,7 +5,7 @@ import GeoNominatim from "../components/GeoNominatim";
 import { Fragment, useContext } from "react";
 import "../App.css";
 export default function Home() {
-  const [geoauto, geoautoError, geomanual, met] = useContext(GeoContext);
+  const { geoauto, geoautoError, geomanual, met } = useContext(GeoContext);
   return (
     <Fragment>
       {geoautoError && (

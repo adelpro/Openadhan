@@ -15,43 +15,54 @@ export function GeoProvider({ children }) {
   });
   const [geoautoError, setgeoautoError] = useState(null);
   useEffect(() => {
+    let isMounted = true;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log(pos.coords.latitude + " / " + pos.coords.longitude); // display VALUE
         const newUserPos = {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude,
           accuracy: pos.coords.accuracy,
           methode: "auto",
         };
-        setgeoauto(newUserPos); // store data in usestate
-        setgeoautoError(null);
+        if (isMounted) {
+          setgeoauto(newUserPos); // store data in usestate
+          setgeoautoError(null);
+        }
       },
       (err) => {
-        console.log(err.message);
-        setgeoautoError(err);
+        if (isMounted) {
+          console.log(err.message);
+          setgeoautoError(err);
+        }
       },
       {}
     );
     const meth = localStorage.getItem("methode");
 
     if (meth === "manual") {
-      setmet(meth);
       const newUserPos = {
         latitude: localStorage.getItem("latitude"),
         longitude: localStorage.getItem("longitude"),
         accuracy: localStorage.getItem("accuracy"),
       };
-      setgeomanual(newUserPos);
+      if (isMounted) {
+        setmet("manual");
+        setgeomanual(newUserPos);
+      }
     } else {
-      setmet("auto");
+      if (isMounted) {
+        setmet("auto");
+      }
     }
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
     <div>
       <GeoContext.Provider
-        value={[
+        value={{
           geoauto,
           geoautoError,
           geomanual,
@@ -59,7 +70,7 @@ export function GeoProvider({ children }) {
           setgeoauto,
           setgeomanual,
           setmet,
-        ]}
+        }}
       >
         {children}
       </GeoContext.Provider>

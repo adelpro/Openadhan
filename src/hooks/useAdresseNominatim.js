@@ -4,8 +4,11 @@ export const useAdresseNominatim = (url) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    let isMounted = true;
+    if (isMounted) {
+      setLoading(true);
+      setError(null);
+    }
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -16,10 +19,23 @@ export const useAdresseNominatim = (url) => {
         return response.json();
       })
       .then((data) => {
-        setData(data.address);
+        if (isMounted) {
+          setData(data.address);
+        }
       })
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .catch((err) => {
+        if (isMounted) {
+          setError(err.message);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
 
   return { data, error, loading };

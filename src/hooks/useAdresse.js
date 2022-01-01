@@ -4,8 +4,11 @@ export const useAdresse = (url) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    let isMounted = true;
+    if (isMounted) {
+      setLoading(true);
+      setError(null);
+    }
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -16,10 +19,23 @@ export const useAdresse = (url) => {
         return response.json();
       })
       .then((data) => {
-        setData(data);
+        if (isMounted) {
+          setData(data);
+        }
       })
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .catch((err) => {
+        if (isMounted) {
+          setError(err.message);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
 
   return { data, error, loading };

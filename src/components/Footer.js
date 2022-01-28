@@ -28,7 +28,7 @@ export default function Header() {
         component="div"
         gutterBottom
       >
-        {language === "Arabic" ? content.Arabic.footer : content.English.footer}
+        {content[`${language}`][`footer`]}
       </Typography>
     </AppBar>
   );

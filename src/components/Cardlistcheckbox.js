@@ -4,6 +4,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import { ListItem } from "@mui/material";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import logo from "../assets/logo.svg";
+import { AdhanParamContext } from "../context/AdhanParamContext";
 export default function Cardlistcheckbox() {
   const [GeoBigdatacloud, setGeoBigdatacloud] = useLocalStorage(
     "GeoBigdatacloud",
@@ -13,15 +14,28 @@ export default function Cardlistcheckbox() {
     "GeoNominatim",
     "true"
   );
+  const { lan: language } = React.useContext(AdhanParamContext);
+  const content = {
+    English: {
+      title: "Cards",
+      GeoBigdatacloud: "GeoBigdatacloud API card",
+      GeoNominatim: "GeoNominatim API card",
+    },
+    Arabic: {
+      title: "البطاقات",
+      GeoBigdatacloud: "GeoBigdatacloud API بطاقة",
+      GeoNominatim: "GeoNominatim API بطاقة",
+    },
+  };
   return (
     <div className="card">
       <img src={logo} alt="logo" />
-      <h2>Cards</h2>
+      <h2>{content[`${language}`][`title`]}</h2>
       <ListItem>
         <ToggleSwitch
           checked={JSON.parse(GeoBigdatacloud)}
           id="GeoBigdatacloud-switch"
-          label="GeoBigdatacloud API card"
+          label={content[`${language}`][`GeoBigdatacloud`]}
           onChange={(e) => {
             setGeoBigdatacloud(JSON.stringify(e.target.checked));
           }}
@@ -31,7 +45,7 @@ export default function Cardlistcheckbox() {
         <ToggleSwitch
           checked={JSON.parse(GeoNominatim)}
           id="GeoNominatim-switch"
-          label="GeoNominatim API card"
+          label={content[`${language}`][`GeoNominatim`]}
           onChange={(e) => {
             setGeoNominatim(JSON.stringify(e.target.checked));
           }}

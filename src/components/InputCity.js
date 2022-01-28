@@ -1,13 +1,30 @@
 import { useContext, useState, useRef } from "react";
-import { Typography, Container } from "@mui/material";
 import { GeoContext } from "../context/GeoContext";
+import logo from "../assets/logo.svg";
+import { AdhanParamContext } from "../context/AdhanParamContext";
+import { IconButton, InputBase, Paper } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import SearchIcon from "@mui/icons-material/Search";
+import Container from "@mui/material/Container";
 export default function InputCity() {
+  const { lan: language } = useContext(AdhanParamContext);
+  const content = {
+    English: {
+      title: "Location",
+      inputplaceholder: "City name",
+      searchp: "Search by city name",
+    },
+    Arabic: {
+      title: "تحديد الموقع",
+      inputplaceholder: "إسم المدينة",
+      searchp: "البحث بواسطة إسم المدينة",
+    },
+  };
   const UiRef = useRef();
   const [query, setQuery] = useState("");
   const [data, setdata] = useState([]);
-  const { geoauto, geoautoError, setgeomanual, met, setmet } = useContext(
-    GeoContext
-  );
+  const { geoauto, geoautoError, setgeomanual, met, setmet } =
+    useContext(GeoContext);
   const handlemethode = (lat, lon, acc, m) => {
     localStorage.setItem("methode", m);
     setmet(m);
@@ -20,7 +37,7 @@ export default function InputCity() {
     setgeomanual({
       latitude: item.lat,
       longitude: item.lon,
-      accuracy: ""
+      accuracy: "",
     });
     setdata(null);
   };
@@ -49,24 +66,40 @@ export default function InputCity() {
     }
   };
   return (
-    <Container>
-      <Typography gutterBottom variant="h5" component="div">
-        Location :{met}
-      </Typography>
-      <form onSubmit={(e) => onSubmitHandler(e)}>
-        <label htmlFor="name">City name</label>
-        <input
-          onChange={(e) => setQuery(e.target.value)}
-          value={query}
-          onKeyPress={search}
-          type="text"
-          id="name"
-        />
-        <button>Search</button>
-        <button onClick={autoButtonHandler} disabled={met === "auto"}>
-          Auto
-        </button>
-      </form>
+    <div className="card">
+      <img src={logo} alt="logo" />
+      <h2>
+        {content[`${language}`][`title`]} :{met}
+      </h2>
+      <Container>
+        <Paper
+          component="form"
+          onSubmit={(e) => onSubmitHandler(e)}
+          sx={{
+            p: "2px 4px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder={content[`${language}`][`inputplaceholder`]}
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+            onKeyPress={search}
+            type="text"
+            id="name"
+          />
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <button onClick={autoButtonHandler} disabled={met === "auto"}>
+            Auto
+          </button>
+        </Paper>
+      </Container>
+      <p>{content[`${language}`][`searchp`]} (API nominatim)</p>
       {geoautoError && <p>{geoautoError.message}</p>}
       {data && (
         <ul ref={UiRef} className="mat_list">
@@ -79,6 +112,6 @@ export default function InputCity() {
           })}
         </ul>
       )}
-    </Container>
+    </div>
   );
 }

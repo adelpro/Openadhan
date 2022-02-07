@@ -1,15 +1,55 @@
 {
   "short_name": "OpenAdhan",
   "name": "OpenAdhan",
+  "categories": ["social", "education", "books"],
+  "lang": "ar",
+  "url": "/",
+  "scope": "/",
+  "id": "nhadonnpnhmghdaakodelnkkljdempbk",
+  "shortcuts": [
+    {
+      "name": "حول الموقع",
+      "short_name": "حول الموقع",
+      "description": "حول الموقع",
+      "url": "./about",
+      "icons": [
+        {
+          "src": "images/192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any maskable"
+        }
+      ]
+    },
+    {
+      "name": "الإعدادات",
+      "short_name": "الإعدادات",
+      "description": "الإعدادات",
+      "url": "./config",
+      "icons": [
+        {
+          "src": "images/192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any maskable"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
-      "src": "/assets/openadhan.ico",
+      "src": "/images/openadhan.ico",
       "sizes": "32x32",
       "type": "image/ico"
     },
     {
-      "src": "/assets/openadhan.png",
-      "sizes": "500x500",
+      "src": "/images/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],

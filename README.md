@@ -40,16 +40,7 @@ Link: ( https://openadhan.web.app )
 
 ✔ AdhanJS
 
-
-
 ## Contact us
-[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
-[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
-[3.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
-[1]: https://www.twitter.com/adelpro
-[2]: https://www.facebook.com/wathakker.wakf
-[3]: https://github.com/adelpro/Openadhan
-
 [![alt text][1.1]][1]
 [![alt text][2.1]][2]
 [![alt text][3.1]][3]
@@ -60,3 +51,10 @@ Link: ( https://openadhan.web.app )
 [![BitCoin](https://badgen.net/badge/icon/bitcoin?icon=bitcoin&label)](bitcoin:1PstR1HYTG8FbVRR7YZhQftYumVAURXuq7?label=Quranipfs&message=Payment%20to%20Quranipfs)
 #
 ![](https://komarev.com/ghpvc/?username=adelpro&style=flat-squar&color=brightgreen)
+
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
+[3.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
+[1]: https://www.twitter.com/adelpro
+[2]: https://www.facebook.com/wathakker.wakf
+[3]: https://github.com/adelpro/Openadhan

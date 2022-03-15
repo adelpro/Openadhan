@@ -51,6 +51,7 @@ Link: ( https://openadhan.web.app )
 [![BitCoin](https://badgen.net/badge/icon/bitcoin?icon=bitcoin&label)](bitcoin:1PstR1HYTG8FbVRR7YZhQftYumVAURXuq7?label=Quranipfs&message=Payment%20to%20Quranipfs)
 ##
 ![](https://komarev.com/ghpvc/?username=adelpro&style=flat-squar&color=brightgreen)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7c9642bd9f1f403b862237cdc1ba2731)](https://www.codacy.com/gh/adelpro/Openadhan/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=adelpro/Openadhan&amp;utm_campaign=Badge_Grade)
 
 [1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
 [2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)

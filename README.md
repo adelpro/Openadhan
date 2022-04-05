@@ -1,7 +1,7 @@
 # Openadhan
 ![Openadhan](https://openadhan.web.app/images/512x512.png)
 ## About
-Web application made with Reactjs for calculating Muslim prayer times using local (auto) position or manual postion calculated (with city search).
+Web application made with Reactjs for calculating Muslim prayer times using local (auto) position or manual position calculated (with city search).
 Link: ( https://openadhan.web.app )
 ## Features
 ✔ Simple to use.
@@ -20,9 +20,9 @@ Link: ( https://openadhan.web.app )
 
 ✔ Animated cards design.
 
-✔ Configuation page to adapte app to your needs (UI , Adhan configuration, location).
+✔ Configuration page to adapt app to your needs (UI , Adhan configuration, location).
 
-✔ Save/load configuraion from localStorage.
+✔ Save/load configurraion from localStorage.
 
 ✔ Offline Api fetch.
 

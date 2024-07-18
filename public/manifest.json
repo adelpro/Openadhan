@@ -1,0 +1,21 @@
+{
+  "short_name": "OpenAdhan",
+  "name": "OpenAdhan",
+  "icons": [
+    {
+      "src": "/assets/openadhan.ico",
+      "sizes": "32x32",
+      "type": "image/ico"
+    },
+    {
+      "src": "/assets/openadhan.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

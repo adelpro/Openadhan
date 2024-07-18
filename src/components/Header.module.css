@@ -1,0 +1,55 @@
+.active {
+  font-weight: bold;
+  font-size: 15px;
+  opacity: 0.55;
+  color: rgb(46, 75, 168);
+  font-size: 20px;
+  margin: 0px 30px 0px 30px;
+  text-decoration: none;
+  position: relative;
+}
+
+.active:after {
+  bottom: -4px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  background: rgb(46, 75, 168);
+  opacity: 0.6;
+  transition: width 0.3s ease 0s, opacity 0.3s ease 0s;
+  width: 0;
+}
+
+.active:hover:after {
+  width: 100%;
+  opacity: 0.9;
+}
+.link {
+  font-size: 14px;
+  opacity: 0.55;
+  color: rgb(61, 57, 57);
+  font-size: 20px;
+  margin: 0px 30px 0px 30px;
+  text-decoration: none;
+  position: relative;
+}
+
+.link:after {
+  bottom: -4px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  background: rgb(61, 57, 57);
+  opacity: 0.6;
+  transition: width 0.3s ease 0s, opacity 0.3s ease 0s;
+  width: 0;
+}
+
+.link:hover:after {
+  width: 100%;
+  opacity: 0.9;
+}
